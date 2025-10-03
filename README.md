@@ -130,9 +130,9 @@ api.versioning.strategy = uri  # ou mediaType
 - Casos de fallback / erro (cliente solicita versão inexistente)
 - Testes de content negotiation (aceitação de diferentes media types)
 
-  ## 📈 Quando Adotar Cada Estratégia
+## 📈 Quando Adotar Cada Estratégia
 
-  | Estratégia     | Ideal quando...                                   |
+| Estratégia     | Ideal quando...                                   |
 | -------------- | ------------------------------------------------- |
 | **URI**        | Quer simplicidade e visibilidade clara da versão  |
 | **Media Type** | Deseja URLs estáveis e evoluir sem mudar caminhos |
