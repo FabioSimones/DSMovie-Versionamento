@@ -1,38 +1,35 @@
-package com.devsuperior.dsmovie.entities;
+package com.devsuperior.dsmovie.dto;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.devsuperior.dsmovie.entities.Movie;
 
-import javax.persistence.*;
+public class MovieGenreDTO {
 
-@Entity
-@Table(name = "tb_movie")
-public class Movie {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Double score;
 	private Integer count;
 	private String image;
+    private String genre;
 
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
-	
-	@OneToMany(mappedBy = "id.movie")
-	private Set<Score> scores = new HashSet<>();
-	
-	public Movie() {
+	public MovieGenreDTO() {
 	}
 
-	public Movie(Long id, String title, Double score, Integer count, String image) {
+	public MovieGenreDTO(Long id, String title, Double score, Integer count, String image, String genre) {
 		this.id = id;
 		this.title = title;
 		this.score = score;
 		this.count = count;
 		this.image = image;
+        this.genre = genre;
+	}
+
+	public MovieGenreDTO(Movie movie) {
+		id = movie.getId();
+		title = movie.getTitle();
+		score = movie.getScore();
+		count = movie.getCount();
+		image = movie.getImage();
+        genre = movie.getGenre().getName();
 	}
 
 	public Long getId() {
@@ -75,15 +72,11 @@ public class Movie {
 		this.image = image;
 	}
 
-	public Set<Score> getScores() {
-		return scores;
-	}
-
-    public Genre getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 }
